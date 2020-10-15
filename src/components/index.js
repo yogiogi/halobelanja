@@ -25,6 +25,8 @@ import Header from './header/Header';
 import PricingCard from './pricing/PricingCard';
 import Tooltip from './tooltip/Tooltip';
 
+import ButtonBalances from './buttonBalances/ButtonBalances';
+
 import Text from './text/Text';
 import {
   colors,
@@ -70,4 +72,5 @@ export {
   withTheme,
   Image,
   Loading,
+  ButtonBalances,
 };

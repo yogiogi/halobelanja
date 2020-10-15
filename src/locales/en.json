@@ -126,7 +126,11 @@
     "text_rating_desc": "Rating: High To Low",
     "text_alphabetical_asc": "Alphabetical: A to Z",
     "text_alphabetical_desc": "Alphabetical: Z to A",
-    "text_search_store": "Find Store"
+    "text_search_store": "Find Store",
+    "text_deposit": "Deposit",
+    "text_exchange": "Exchange",
+    "text_shopping": "Shopping",
+    "text_history": " History"
   },
   "catalog": {
     "text_view_all_category": "all >",

@@ -49,6 +49,7 @@ import {LOCATION_DEFAULT} from 'src/config/constant';
 import {getAddressFromCurrentLocation} from 'src/utils/geo';
 import {red, grey6} from 'src/components/config/colors';
 import {margin} from 'src/components/config/spacing';
+import Balance from './home/containers/Balance';
 
 const {width} = Dimensions.get('window');
 
@@ -68,7 +69,7 @@ const containers = {
   divider: Divider,
 };
 
-const widthComponent = spacing => {
+const widthComponent = (spacing) => {
   if (!spacing) {
     return width;
   }
@@ -134,7 +135,7 @@ class HomeScreen extends React.Component {
 
   getLocation() {
     Geolocation.getCurrentPosition(
-      async position => {
+      async (position) => {
         if (position.coords?.latitude) {
           this.getAddress(
             position?.coords?.latitude,
@@ -147,7 +148,7 @@ class HomeScreen extends React.Component {
           );
         }
       },
-      error => {
+      (error) => {
         this.getAddress(LOCATION_DEFAULT.latitude, LOCATION_DEFAULT.longitude);
       },
       {
@@ -258,12 +259,12 @@ class HomeScreen extends React.Component {
         <ScrollView
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}>
-          {config.map(data => this.renderContainer(data))}
+          <Balance />
+          {config.map((data) => this.renderContainer(data))}
         </ScrollView>
-        <ModalHomePopup />
         <ModalSearchLocation
           closeModal={() => this.openOrCloseModal(false)}
-          onSelectLocation={detail => {
+          onSelectLocation={(detail) => {
             this.userSelectLocation(detail);
           }}
           visibleModal={this.state.visibleModal}
@@ -300,7 +301,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     auth: authSelector(state),
     location: locationSelector(state),
@@ -311,7 +312,7 @@ const mapStateToProps = state => {
   };
 };
 const HomeScreenComponent = connect(mapStateToProps)(HomeScreen);
-export default function(props) {
+export default function (props) {
   const {t} = useTranslation();
   return <HomeScreenComponent t={t} {...props} />;
 }
